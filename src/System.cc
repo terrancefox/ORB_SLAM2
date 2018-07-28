@@ -25,10 +25,11 @@
 #include <thread>
 #include <pangolin/pangolin.h>
 #include <iomanip>
+#include <unistd.h>
 
 namespace ORB_SLAM2
 {
-
+using namespace std;
 System::System(const string &strVocFile, const string &strSettingsFile, const eSensor sensor,
                const bool bUseViewer):mSensor(sensor), mpViewer(static_cast<Viewer*>(NULL)), mbReset(false),mbActivateLocalizationMode(false),
         mbDeactivateLocalizationMode(false)
@@ -62,13 +63,13 @@ System::System(const string &strVocFile, const string &strSettingsFile, const eS
     cout << endl << "Loading ORB Vocabulary. This could take a while..." << endl;
 
     mpVocabulary = new ORBVocabulary();
-    bool bVocLoad = mpVocabulary->loadFromTextFile(strVocFile);
-    if(!bVocLoad)
-    {
-        cerr << "Wrong path to vocabulary. " << endl;
-        cerr << "Falied to open at: " << strVocFile << endl;
-        exit(-1);
-    }
+    mpVocabulary->load(strVocFile);
+    // if(!bVocLoad)
+    // {
+        // cerr << "Wrong path to vocabulary. " << endl;
+        // cerr << "Falied to open at: " << strVocFile << endl;
+        // exit(-1);
+    // }
     cout << "Vocabulary loaded!" << endl << endl;
 
     //Create KeyFrame Database

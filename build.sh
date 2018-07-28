@@ -1,6 +1,6 @@
-echo "Configuring and building Thirdparty/DBoW2 ..."
+echo "Configuring and building Thirdparty/DBow2 ..."
 
-cd Thirdparty/DBoW2
+cd Thirdparty/DBow3
 mkdir build
 cd build
 cmake .. -DCMAKE_BUILD_TYPE=Release

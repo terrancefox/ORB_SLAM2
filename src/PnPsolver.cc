@@ -55,9 +55,8 @@
 #include <vector>
 #include <cmath>
 #include <opencv2/core/core.hpp>
-#include "Thirdparty/DBoW2/DUtils/Random.h"
+//#include "Thirdparty/DBoW2/DUtils/Random.h"
 #include <algorithm>
-
 using namespace std;
 
 namespace ORB_SLAM2
@@ -190,8 +189,8 @@ cv::Mat PnPsolver::iterate(int nIterations, bool &bNoMore, vector<bool> &vbInlie
         // Get min set of points
         for(short i = 0; i < mRansacMinSet; ++i)
         {
-            int randi = DUtils::Random::RandomInt(0, vAvailableIndices.size()-1);
-
+            //int randi = DUtils::Random::RandomInt(0, vAvailableIndices.size()-1);
+            int randi = rand() % (vAvailableIndices.size() - 1);
             int idx = vAvailableIndices[randi];
 
             add_correspondence(mvP3Dw[idx].x,mvP3Dw[idx].y,mvP3Dw[idx].z,mvP2D[idx].x,mvP2D[idx].y);
